@@ -1,0 +1,5 @@
+your_last_search_query_1
+your_last_search_query_2
+your_last_search_query_3
+your_last_search_query_4
+your_last_search_query_5
