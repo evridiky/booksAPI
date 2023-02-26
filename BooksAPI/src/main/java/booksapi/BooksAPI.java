@@ -4,6 +4,8 @@ import services.BooksAPIService;
 
 public class BooksAPI {
 
+	//αρχικοποίηση του BooksAPIService 
+	
 public static BooksAPIService getBooksDBService() {
 		return new BooksAPIService("https://www.googleapis.com/books/v1/volumes?", "AIzaSyAMm8wdV_RFt2Dq6NE-FrdemuseQxbmkKU");	
 	}
