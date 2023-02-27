@@ -38,6 +38,7 @@ public class Application {
 			System.out.println("3. Print 5 last searches.");
 			System.out.println("4. Exit.");
 			
+
 			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine();
 
