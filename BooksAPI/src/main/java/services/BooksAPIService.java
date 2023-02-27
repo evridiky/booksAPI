@@ -29,12 +29,12 @@ import model.googlebooksdb.com.example.*;
 public class BooksAPIService {
 
 	private final String API_URL;
-	private final String API_KEY;
+	//private final String API_KEY;
 	
 	
-	public BooksAPIService(String aPI_URL, String aPI_KEY) {
+	public BooksAPIService(String aPI_URL) {
 		API_URL = aPI_URL;
-		API_KEY = aPI_KEY;
+		//API_KEY = aPI_KEY;
 	}
 	
 		
@@ -42,7 +42,7 @@ public class BooksAPIService {
 	// get shelf info
 	// ftiaxnoume mia lista me ta dedomena apo tin klasi BookShelfInfo
 	public List<ShelfInfo> getShelfInfo() throws BooksAPIException {
-		BookshelfInfo result = getAPIData1( API_URL, API_KEY);
+		BookshelfInfo result = getAPIData1( API_URL);
 		List<ShelfInfo> shelfInfoList = new ArrayList<>(result.getItems().size());
 		for (bookshelf.Item theItem : result.getItems()) {
 			shelfInfoList.add(new ShelfInfo(theItem));
@@ -54,7 +54,7 @@ public class BooksAPIService {
 	// search for books info
 	// ftiaxnoume mia lista me ta dedomena apo tin klasi Example
 	public List<BooksInfo> searchForBooks(String parameter) throws BooksAPIException {
-		Example result = getAPIData(parameter, API_URL, API_KEY);
+		Example result = getAPIData(parameter, API_URL);
 		List<BooksInfo> booksInfoList = new ArrayList<>(result.getItems().size());
 		for (Item theItem : result.getItems()) {
 			booksInfoList.add(new BooksInfo(theItem));
@@ -69,14 +69,14 @@ public class BooksAPIService {
 	//https://www.googleapis.com/books/v1/volumes?
 	// get API Data
 		//Ta exw sto class Example gia to getBooks
-	private Example getAPIData(String parameter, String API_URL, String API_KEY)
+	private Example getAPIData(String parameter, String API_URL)
 			throws BooksAPIException {
 		try {
 				//ftiaxnoume to uri		
 			final URIBuilder uriBuilder = new URIBuilder(API_URL)
-				.setPathSegments("books", "v1", "volumes")
+				.setPathSegments("books", "v1", "volumes");
 					
-					.addParameter("api_key", API_KEY);
+					//.addParameter("api_key", API_KEY);
 			if (parameter != null ) 
 			{
 				uriBuilder.addParameter("q", parameter);
@@ -131,22 +131,19 @@ public class BooksAPIService {
 	
 	// "https://www.googleapis.com/books/v1/users/"
 	//Ta exw sto class Example gia to shelf 102701940585560677579
-	private BookshelfInfo getAPIData1( String API_URL, String API_KEY)
+	private BookshelfInfo getAPIData1( String API_URL)
 			throws BooksAPIException {
 		try {
 						
 			final URIBuilder uriBuilder = new URIBuilder();
 			//https://learn.microsoft.com/en-us/dotnet/api/system.uribuilder?view=net-7.0
 			//.setPathSegments("books", "v1", "users")
-			uriBuilder.setScheme("https").setHost("www.googleapis.com").setPath("/books/v1/users/102701940585560677579/bookshelves")
-					//setPath("https://www.googleapis.com/books/v1/users/102701940585560677579/bookshelves")
-					.addParameter("api_key", API_KEY);
+			uriBuilder.setScheme("https").setHost("www.googleapis.com").setPath("/books/v1/users/102701940585560677579/bookshelves");
+			//.addParameter("api_key", API_KEY);
 			final URI uri = uriBuilder.build();
 			
 			
-	
 				
-			
 			final HttpGet getRequest = new HttpGet(uri);
 			final CloseableHttpClient httpclient = HttpClients.createDefault();
 			
