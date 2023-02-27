@@ -20,12 +20,7 @@ public class Searches {
 	public void log() throws IOException {
 		// TODO Auto-generated method stub
 
-//		HashMap<String, String> namedSearches = new HashMap<>();
-//        namedSearches.put("search_1", args[0]);
-//        namedSearches.put("search_2", args[0]);
-//        namedSearches.put("search_3", args[0]);
-//        namedSearches.put("search_4", "your_search_query_4");
-//        namedSearches.put("search_5", "your_search_query_5");
+
 
 		
 		
@@ -46,25 +41,20 @@ public class Searches {
 //HashMap<String, String> namedSearches = new HashMap<>();
 
 		//me ti methodo fileReader anoigei to arxeio txt kai vgazei ta dedomena
-		
-	//	try {
+	
 			FileReader reader = new FileReader("named_searches.txt");
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			String line;
 			int index=0;
 			
 			while ((line = bufferedReader.readLine()) != null && index<5) {
-//				String[] parts = line.split("=");
-//				String name = parts[0];
-//				String search = parts[1];
+
 				searches[index++]= line;
 			}
 			reader.close();
 			System.out.println("Named searches retrieved from file: " + searches);
 			return searches;
-	//	} catch (IOException e) {
-	//		e.printStackTrace();
-	//	}
+	
 	}
 	
 	//bazoume ta apotelesmata apo panw, se enan pinaka me 5 eggrafes o opoios einai temporary kai meta diagrafetai
